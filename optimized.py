@@ -35,28 +35,24 @@ def load_shares(file_path):
             )
     return shares
 
-def brute_force(shares):
-
+def optimized_solution(shares):
     best_combination = []
     best_cost = 0
     best_profit = 0
 
-    for size in range(1, len(shares) + 1):
-        for combination in combinations(shares, size):
-            total_cost = sum(share.price for share in combination)
-            total_profit = sum(share.profit for share in combination)
-            if total_cost <= 500:
-                if total_profit > best_profit:
-                    best_profit = total_profit
-                    best_cost = total_cost
-                    best_combination = combination
+    shares.sort(key=lambda share: share.profit_percent, reverse=True)
+    for share in shares:
+        if best_cost + share.price <= 500:
+            best_combination.append(share)
+            best_cost += share.price
+            best_profit += share.profit
     return best_combination, best_cost, best_profit
 
 def main():
 
     shares = load_shares("data/actions.csv")
     start = time.perf_counter()
-    best_combination, best_cost, best_profit = brute_force(shares)
+    best_combination, best_cost, best_profit = optimized_solution(shares)
     end = time.perf_counter()
     print("\nMeilleure combinaison :")
     for share in best_combination:
