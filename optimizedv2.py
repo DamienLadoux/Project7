@@ -88,7 +88,7 @@ def optimized_solution(shares):
 
 def main():
 
-    shares, invalid_lines = load_shares("data/dataset2.csv")
+    shares, invalid_lines = load_shares("data/dataset1.csv")
     exploration_report(shares, invalid_lines)
     start = time.perf_counter()
     best_combination, best_cost, best_profit = optimized_solution(shares)
