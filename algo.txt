@@ -1,0 +1,34 @@
+Algorithme bruteforce
+Variable
+	meilleur profit <- 0
+	coût <- 0
+	combinaison <- []
+Début
+	Pour chaque combinaison
+		calculer le coût
+		Si coût <= 500
+			calculer le bénéfice
+			Si bénéfice est meilleur
+				mémoriser la combinaison
+			Fin Si
+		Fin Si
+	Fin Pour
+	Retourner combinaison
+Fin
+
+
+Algorithme optimized
+Variable
+	meilleur profit <- 0
+	coût <- 0
+	combinaison <- []
+Début
+    Tri des actions ordre décroissant selon profit
+    Pour chaque action
+        Si coût += cout.action < 500
+            Ajouter l'action à la combinaison
+            coût <- coût + coût.action
+        Fin Si
+    Fin Pour
+    Retourner combinaison
+Fin
